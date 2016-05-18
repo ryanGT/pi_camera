@@ -15,7 +15,7 @@ if not os.path.exists(outdir):
 
 for i in range(10):
     filename = 'image_%0.4d.jpg' % i
-    filepath(outdir, filename)
+    filepath = os.path.join(outdir, filename)
     camera.capture(filepath)
     time.sleep(1.0)
     
