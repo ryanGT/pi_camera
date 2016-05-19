@@ -5,7 +5,8 @@ import time
 camera = PiCamera()
 camera.rotation = 180
 camera.brightness = 60
-camera.ISO = 800
+#camera.ISO = 800
+camera.ISO = 1600
 camera.start_preview()
 #sleep(10)
 t1 = time.time()
