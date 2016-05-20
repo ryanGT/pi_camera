@@ -11,14 +11,26 @@ camera.start_preview()
 #sleep(10)
 t1 = time.time()
 import os
-outdir = '/home/pi/baby_monitor'
-if not os.path.exists(outdir):
-    os.mkdir(outdir)
+rootdir = '/home/pi/baby_monitor'
+if not os.path.exists(rootdir):
+    os.mkdir(rootdir)
 
-for i in range(10):
-    filename = 'image_%0.4d.jpg' % i
-    filepath = os.path.join(outdir, filename)
+foldername = time.strftime('%m_%d_%y')
+folderpath = os.path.join(rootdir, foldername)
+print('folderpath: ' + folderpath)
+
+if not os.path.exists(folderpath):
+    os.mkdir(folderpath)
+    
+t1 = time.time()
+runtime = 30.0*60# 30 minutes, expressed in seconds
+endtime = t1 + runtime
+curtime = time.time()
+while curtime < endtime:
+    filename = time.strftime('image_%I_%M_%S_%p.jpg')
+    filepath = os.path.join(folderpath, filename)
+    print(filepath)
     camera.capture(filepath)
-    time.sleep(1.0)
+    time.sleep(10.0)# wait 10 seconds before next picture
     
 camera.stop_preview()
