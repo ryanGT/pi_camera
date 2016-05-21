@@ -3,13 +3,14 @@ from time import sleep
 import time
 
 camera = PiCamera()
-camera.rotation = 180
-camera.brightness = 60
+camera.rotation = 180# image was upside down
+camera.brightness = 60# default brightness is 50; this makes the
+                      # picture slightly brighter through longer
+                      # exposure
 #camera.ISO = 800
 camera.ISO = 1600
-camera.start_preview()
-#sleep(10)
-t1 = time.time()
+camera.start_preview()# I think this basically turns the camera on
+
 import os
 rootdir = '/home/pi/baby_monitor'
 if not os.path.exists(rootdir):
@@ -23,7 +24,7 @@ if not os.path.exists(folderpath):
     os.mkdir(folderpath)
     
 t1 = time.time()
-runtime = 30.0*60# 30 minutes, expressed in seconds
+runtime = 180.0*60# 30 minutes, expressed in seconds
 endtime = t1 + runtime
 curtime = time.time()
 while curtime < endtime:
