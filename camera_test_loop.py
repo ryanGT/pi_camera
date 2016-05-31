@@ -12,7 +12,8 @@ camera.ISO = 1600
 camera.start_preview()# I think this basically turns the camera on
 
 import os
-rootdir = '/home/pi/baby_monitor'
+#rootdir = '/home/pi/baby_monitor'
+rootdir = '/home/pi/git/cherrypy_learn/img/'
 if not os.path.exists(rootdir):
     os.mkdir(rootdir)
 
